@@ -1,10 +1,46 @@
 <html>
     <head>
+<!--        JS -->
+        <script type="text/javascript" src="../static/angular.min.js"></script>
+        <script type="text/javascript" src="../static/angular-route.min.js"></script>
+		<script type="text/javascript" src="../static/angular-main.js"></script>
+<!--        CSS -->
+<!--        <link rel="stylesheet" type="text/css" href="../static/stylesheet.css">-->
     </head>
     
-    <body>
+    <body ng-app="surveysite">
         
         <h1>Survey 1</h1>
+        
+        <div class="mainbody" ng-controller="survey1Ctrl">
+        
+            <form action="https://formspree.io/your@email.com" method="POST">
+                
+                <!-- First set of checkboxes here loaded with data dependent on the url -->
+                <div class="first-checkbox">
+                
+                    <input type="checkbox" name="Option1" value="Option1" ng-disabled="finishFirst">{{testData.option1}}
+                    <input type="checkbox" name="Option1" value="Option1" ng-disabled="finishFirst">{{testData.option2}}
+                    <input type="checkbox" name="Option1" value="Option1" ng-disabled="finishFirst">{{testData.option3}}
+                    <input type="checkbox" name="Option1" value="Option1" ng-disabled="finishFirst">{{testData.option4}}
+                
+                </div>
+                
+                
+                <!-- Once 2 have been clicked then disable previous selections and select from next 2 -->
+                <div class="second-checkbox" ng-show="finishFirst">
+                
+                </div>
+                
+                
+                <!-- Show submit button once the previous have been clicked on -->
+                <input type="submit" value="Submit">
+                
+                
+            
+            </form>
+            
+        </div>
         
     </body>
 
