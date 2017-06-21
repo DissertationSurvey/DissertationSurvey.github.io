@@ -1,5 +1,9 @@
 angular.module('surveysite', ['ngRoute'])
 
+    .config(function($routeProvider) {
+    
+    })
+
     .controller('survey1Ctrl', ['$scope', '$routeParams', '$location', function ($scope, $routeParams, $location) {
         
         var testType = $routeParams.type;
@@ -8,6 +12,10 @@ angular.module('surveysite', ['ngRoute'])
         
         var testType2 = $location.search();
         console.log(testType2);
+        
+        $scope.$on('$routeChangeSuccess', function() {
+           console.log($routeParams); 
+        });
         
         $scope.testData;
         
