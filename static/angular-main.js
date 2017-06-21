@@ -1,21 +1,12 @@
 angular.module('surveysite', ['ngRoute'])
 
-    .config(function($routeProvider) {
-    
-    })
+    .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+        
+        $locationProvider.html5Mode({enabled: true, requireBase: false});
+    }])
 
     .controller('survey1Ctrl', ['$scope', '$routeParams', '$location', function ($scope, $routeParams, $location) {
-        
-        var testType = $routeParams.type;
-        console.log($routeParams);
-        console.log(testType);
-        
-        var testType2 = $location.search();
-        console.log(testType2);
-        
-        $scope.$on('$routeChangeSuccess', function() {
-           console.log($routeParams); 
-        });
+        var testType = $location.search().type;
         
         $scope.testData;
         
@@ -58,13 +49,13 @@ angular.module('surveysite', ['ngRoute'])
         } else {
             $scope.testData = $scope.goldenData[0];
         }
-        console.log($scope.testData);
         
         
-        $scope.$digest;
+        $scope.goToNextSection = function() {
+            // evaluate first buttons then
+            $scope.finishFirst = true;
+        }
         
-        
-    
         
 
         
